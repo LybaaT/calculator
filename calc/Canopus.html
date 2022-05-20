@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                text-align: center
+            }           
+            body {
+                background:black;
+                padding: 0px;
+                text-align: center;
+            }
+            @font-face {
+                font-family: "numbers" ;
+                src: url(digital-7.ttf);
+            } 
+            @font-face {
+                font-family: "head";
+                src: url(NEORD___.ttf);
+            }
+            @font-face {
+                font-family: "instruct";
+                src: url(ostrich-regular.ttf);
+            }
+            h1 {
+                font-family: "head";
+                font-size: 60px;
+                color: white;
+            }
+            h2 {
+                font-size: 35px;
+                color: rgb(29, 250, 0);
+                font-family: "numbers";
+                
+            }
+            table.center {
+                margin-left: auto; 
+                margin-right: auto;
+            }
+            .button {
+                width: 65px;
+                height: 65px;
+                font-size: 35px;
+                margin: 3px;
+                cursor: pointer;
+                text-align: center;
+                font-family: "numbers";
+                color: white;
+                background-color: rgba(255, 255, 255, 0.145);
+                border: none;
+            }
+            .button:hover {
+                background-color: rgb(22, 22, 22);
+                transition: ease-in 0.06s;
+            }
+            .textview {
+                width: 282px;
+                height: 65px;
+                margin: 5px;
+                font-size: 50px;
+                padding: 5px;
+                font-family: "numbers";
+                color: rgb(29, 250, 0);
+                background-color: rgba(255, 255, 255, 0.083);
+                border: none;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CALCULATOR</h1>
+        <h2>Either write in the display box, or click on the buttons below</h2>
+        <div class="main">
+            <form name="calc">
+                <input class="textview" name="textview">
+            </form>
+            <table class="center">
+                <tr>
+                    <td><input class="button" type="button" value="C" onclick="clean()"></td>
+                    <td><input class="button" type="button" value="<" onclick="back()"></td>
+                    <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+                    <td><input class="button" type="button" value="x" onclick="insert('*')"></td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                    <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                    <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                    <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
+                    <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
+                    <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                    <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
+                </tr>
+                <tr>
+                    <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
+                    <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
+                    <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
+                    <td rowspan="5"><input class="button" type="button" style= "height:140px" value="=" onclick="equal()"></td>
+                </tr>
+                <tr>
+                    <td colspan=2><input class="button" type="button" style="width:140px" value="0" onclick="insert(0)"></td>
+                    <td><input class="button" type="button" value="." onclick="insert('.')"></td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            function insert(num) {
+                document.forms[0][0].value = document.forms[0][0].value + num
+            }
+            function equal() {
+                var exp = document.forms[0][0].value;
+                if(exp) {
+                    document.forms[0][0].value = eval(exp)
+                }
+            }
+            function clean() {
+                document.forms[0][0].value = "";
+            }
+            function back() {
+                var exp = document.forms[0][0].value;
+                document.forms[0][0].value = exp.substring(0, exp.length -1)
+            }
+        </script>
+    </body>
+</html>
